@@ -33,10 +33,33 @@ function lightMode() {
 function switchTheme(event) {
   if (event.target.checked) {
     document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark");
     darkMode();
   } else {
     document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
     lightMode();
   }
 }
+//Event Listner on theme
 toggleSwitch.addEventListener("change", switchTheme);
+
+const currentTheme = localStorage.getItem("theme");
+
+if (currentTheme === "dark") {
+  document.documentElement.setAttribute("data-theme", "dark");
+  darkMode();
+  if (toggleSwitch.checked === false) {
+    toggleSwitch.checked = true;
+  }
+}
+
+//other similar solution
+if (currentTheme) {
+  document.documentElement.setAttribute("data-theme", currentTheme);
+  if (currentTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+    darkMode();
+    toggleSwitch.checked = true;
+  }
+}
