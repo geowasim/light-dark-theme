@@ -59,7 +59,7 @@ if (currentTheme) {
   document.documentElement.setAttribute("data-theme", currentTheme);
   if (currentTheme === "dark") {
     document.documentElement.setAttribute("data-theme", "dark");
-    darkMode();
+    toggleDarkLightMode(true);
     toggleSwitch.checked = true;
   }
 }
